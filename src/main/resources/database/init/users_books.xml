@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="0" author="paradisensei">
+        <createTable tableName="users_books">
+            <column name="user_id" type="int8"/>
+            <column name="book_id" type="int8"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1" author="paradisensei">
+        <addPrimaryKey tableName="users_books" columnNames="user_id, book_id"/>
+    </changeSet>
+
+    <changeSet id="2" author="paradisensei">
+        <addForeignKeyConstraint baseTableName="users_books" baseColumnNames="user_id"
+                                 constraintName="user_fk" referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="3" author="paradisensei">
+        <addForeignKeyConstraint baseTableName="users_books" baseColumnNames="book_id"
+                                 constraintName="book_fk" referencedTableName="book"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
